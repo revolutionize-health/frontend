@@ -22,7 +22,7 @@ const links = {
 const Header = () => {
     return (
         <div style={mainDiv}>
-            <span style={links}>View Procedures</span>
+            <NavLink to="/procedures" style={links}>View Procedures</NavLink>
             <span style={links}> | </span>
             <NavLink to="/login" style={links}>Log In</NavLink>
             <span style={links}> | </span>

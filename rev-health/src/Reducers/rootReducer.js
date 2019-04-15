@@ -30,7 +30,7 @@ const rootReducer = (state = initialState, action) => {
         case REGISTER_SUCCESS:
             return {
                 ...state,
-                friends: action.payload
+                register: action.payload
             }
 
             
