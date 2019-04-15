@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import {register} from "../Actions"
 
 
 const form = {
@@ -12,7 +14,7 @@ const form = {
 const input = {
     border: 'none',
     borderBottom: '2px solid black',
-    width: '200px',
+    width: '300px',
     height: '25px',
     marginBottom: '25px'
 }
@@ -25,22 +27,61 @@ const title={
 
 
 class Register extends Component {
-   
+    constructor(props){
+        super(props)
+        this.state={
+            
+            first_name:"",
+            last_name:"",
+            email: "",
+            password: ""
+            
+        }
+    }
+
+    handleChange = event => {
+        this.setState({
+          
+            ...this.state,
+            [event.target.name]: event.target.value
+         
+        });
+      };
+
+      submitHandle = event => {
+        event.preventDefault();
+        this.props.register(this.state);
+        alert('Working')
+        console.log('state', this.state)
+      };
+
 
     render(){
         return(
             <div>
                 <h1>Welcome to Revolutionize Health</h1> 
-               <p>Creating an account will allow you to add and edit procedures, helping to grow our database and allowing our memebers to find the most affordable hospitals and doctors in their area. </p>
                <h3>We are just going to need to gather a little information from you!</h3>
                <p>We promise it will be quick and painless!</p>
-               <form style={form}>
+               <form style={form} onSubmit={this.submitHandle}>
                    
-                    <p style={title}>Name:</p>
+                    <p style={title}>First Name:</p>
                     <input type="text"
-                           name="name"
+                           name="first_name"
                            required="required"
-                           placeholder="Name"
+                           placeholder="First Name"
+                           value={this.state.first_name} 
+                           onChange={this.handleChange}
+                           style={input}
+                           >
+                    </input>
+
+                    <p style={title}>Last Name:</p>
+                    <input type="text"
+                           name="last_name"
+                           required="required"
+                           placeholder="Last Name"
+                           value={this.state.last_name} 
+                           onChange={this.handleChange}
                            style={input}
                            >
                     </input>
@@ -51,15 +92,8 @@ class Register extends Component {
                            name="email"
                            required="required"
                            placeholder="Email"
-                           style={input}
-                           >
-                    </input>
-                    
-                    <p style={title}>New Username:</p>
-                    <input type="text"
-                           name="username"
-                           required="required"
-                           placeholder="Username"
+                           value={this.state.email} 
+                           onChange={this.handleChange}
                            style={input}
                            >
                     </input>
@@ -69,21 +103,12 @@ class Register extends Component {
                            name="password"
                            required="required"
                            placeholder="Password"
+                           value={this.state.password} 
+                           onChange={this.handleChange}
                            style={input}
                            >
                     </input>
-                    
-                    <p style={title}>Verify Password Password:</p>
-                    <input type="password"
-                           name="password"
-                           required="required"
-                           placeholder="Verify Password"
-                           style={input}
-                           >
-                    </input>
-                    
-                  
-
+                    <button type="submit">Create Account</button>
                 </form>
                
 
@@ -92,6 +117,18 @@ class Register extends Component {
     }
 }
 
-
-
-export default Register
+const mapStateToProps = state => (
+    
+    {
+      register: state.register
+    }
+  );
+  
+  export default connect(
+    mapStateToProps,
+    {
+     
+      register,
+      
+    }
+  )(Register);
