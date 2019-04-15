@@ -35,7 +35,7 @@ constructor(){
         render(){
             return(
                 <div>
-                    <h1>This is the dashboard</h1>
+                    
                     <p>User can add, edit or delete procedures</p>
                     <form>
                     <p>Procedure Name:</p>
