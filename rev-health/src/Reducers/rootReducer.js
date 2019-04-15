@@ -9,7 +9,7 @@ import {
 const initialState = {
     deletingPost: false,
     fetchingPosts: false,
-    register: [],
+    user: [],
     loggingIn: false,
     savingUser: false,
     updatingProcedure: false,
@@ -24,13 +24,13 @@ const rootReducer = (state = initialState, action) => {
         
             return {
                 ...state,
-                savingUser: !state.savingUser
+                register: action.payload
             }
 
         case REGISTER_SUCCESS:
             return {
                 ...state,
-                register: action.payload
+                user: action.payload
             }
 
             

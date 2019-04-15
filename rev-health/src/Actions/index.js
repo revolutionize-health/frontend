@@ -11,14 +11,14 @@ export const FETCH_FAILURE="FETCH_FAILURE"
 
 
 
-export const register = register => dispatch => {
-    console.log("action call, POST");
+export const register = user => dispatch => {
+    console.log("action call, POST", register);
     dispatch({ type: REGISTER });
     axios
-      .post('https://revolutionize-health.herokuapp.com/api/auth/registration', register) 
+      .post('https://revolutionize-health.herokuapp.com/api/auth/registration', user) 
       .then(res => {
         console.log("REGISTERED", res);
-        localStorage.setItem('token', res.data.payload);
+        localStorage.setItem('token', res.data.token);
         dispatch({ type: REGISTER_SUCCESS, payload: res.data });
       })
       .catch(err => ({ err }));
@@ -31,8 +31,8 @@ export const register = register => dispatch => {
         .post("https://revolutionize-health.herokuapp.com/api/auth/login", creds)
         .then(res => {
             console.log(res);
-            localStorage.setItem('token', res.data.payload);
-            dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload});
+            localStorage.setItem('token', res.data.token);
+            dispatch({ type: LOGIN_SUCCESS, payload: res.data.token});
             getData();     
         })
         .catch(err => {
@@ -55,16 +55,3 @@ export const getData = () => {
         })
 }
 
-export const fetchData = () => dispatch => {
-    console.log("action call, FETCH")
-    dispatch({ type: FETCH_DATA});
-    return axios
-        .get("https://revolutionize-health.herokuapp.com/api", { headers: { Authorization: localStorage.getItem('token')}})
-        .then(res => {
-            console.log(res)
-            dispatch({ type: FETCH_COMPLETE, payload: res.data})
-        })
-        .catch(err => {
-            dispatch({ type: FETCH_FAILURE, payload: err})
-        })
-}

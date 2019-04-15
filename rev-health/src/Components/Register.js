@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import {register} from "../Actions"
+import {register} from "../Actions";
+
 
 
 const form = {
@@ -53,6 +54,8 @@ class Register extends Component {
         this.props.register(this.state);
         alert('Working')
         console.log('state', this.state)
+        
+      
       };
 
 
@@ -67,7 +70,7 @@ class Register extends Component {
                     <p style={title}>First Name:</p>
                     <input type="text"
                            name="first_name"
-                           required="required"
+                           
                            placeholder="First Name"
                            value={this.state.first_name} 
                            onChange={this.handleChange}
@@ -78,7 +81,7 @@ class Register extends Component {
                     <p style={title}>Last Name:</p>
                     <input type="text"
                            name="last_name"
-                           required="required"
+                           
                            placeholder="Last Name"
                            value={this.state.last_name} 
                            onChange={this.handleChange}
@@ -108,6 +111,9 @@ class Register extends Component {
                            style={input}
                            >
                     </input>
+                    <span style={title}>Currently Insured?</span>
+                    <input type="checkbox"></input>
+                    
                     <button type="submit">Create Account</button>
                 </form>
                

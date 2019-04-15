@@ -14,16 +14,14 @@ class App extends Component {
     return (
       <div className="App">
       <div><Header className="App-header" /></div>
-        <h1>Welcome to Revolutionize Health</h1>
-        <p>You can get started by clicking here to view the procedures</p>
-        <p>If you would like to create an account or LogIn and add your procedure to the list, click on the links in the navigation bar</p>
+       
        
         <Route path="/login" component={LogIn}/>
         <Route path="/register" component={Register}/>
         <Route path="/procedures" component={ProcedureLookUp} />
 
         <PrivateRoute 
-            path="dashboard" 
+            path="/dashboard" 
             component={() => <Dashboard data={this.props.data} />}
           />
       

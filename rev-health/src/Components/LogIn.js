@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { login, fetchData } from '../Actions';
+import { login } from '../Actions';
 
 class LogIn extends React.Component{
     state = {
         credentials: {
-            username: '',
+            email: '',
             password: ''
         }
     }
@@ -24,9 +24,7 @@ class LogIn extends React.Component{
             .then(() => {
                 this.props.history.push('/dashboard');
             })
-            .then(() => {
-                this.props.fetchData();
-            })
+           
     }
 
     render(){
@@ -35,11 +33,11 @@ class LogIn extends React.Component{
                 <form onSubmit={this.login}>
                     <input 
                         type="text"
-                        name="username"
+                        name="email"
                         required='required'
-                        value={this.state.credentials.username}
+                        value={this.state.credentials.email}
                         onChange={this.handleChange}
-                        placeholder="username..."
+                        placeholder="email..."
                     />
 
                     <input 
@@ -69,4 +67,4 @@ const mapStateToProps = state => ({
     data: state.data
 })
 
-export default connect(mapStateToProps, { login, fetchData }) (LogIn);
+export default connect(mapStateToProps, {login}) (LogIn);
