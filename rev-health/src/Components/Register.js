@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import {register} from "../Actions";
+import Button from "@material-ui/core/Button";
+import './Components.css';
 
 
 
-const form = {
+const mainDiv = {
     display: 'flex',
     flexDirection: 'column',
 
@@ -17,11 +19,11 @@ const input = {
     borderBottom: '2px solid black',
     width: '300px',
     height: '25px',
-    marginBottom: '25px'
+    marginBottom: '10px'
 }
 
 const title={
-    fontSize: '1.2rem',
+    fontSize: '1rem',
     textDecoration: 'underine'
     
 }
@@ -61,11 +63,11 @@ class Register extends Component {
 
     render(){
         return(
-            <div>
+            <div style={mainDiv} >
                 <h1>Welcome to Revolutionize Health</h1> 
                <h3>We are just going to need to gather a little information from you!</h3>
                <p>We promise it will be quick and painless!</p>
-               <form style={form} onSubmit={this.submitHandle}>
+               <form className="card-1" onSubmit={this.submitHandle}>
                    
                     <p style={title}>First Name:</p>
                     <input type="text"
@@ -114,7 +116,9 @@ class Register extends Component {
                     <span style={title}>Currently Insured?</span>
                     <input type="checkbox"></input>
                     
-                    <button type="submit">Create Account</button>
+                    <Button variant="contained" color="primary">
+                            Register User
+                            </Button>
                 </form>
                
 
