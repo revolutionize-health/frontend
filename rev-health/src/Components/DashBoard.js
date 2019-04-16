@@ -4,20 +4,28 @@ import MyProcedures from './MyProcedures'
 import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom'
 
 
-
+const navLinks = {
+    margin: '20px',
+    textDecoration: 'none'
+}
 
 
 class Dashboard extends Component {
 
                 render(){
                     return (
-                        <div>
-                            
-                        <NavLink to="/procedureform">Add a new Procedure</NavLink>
                         
-                        <NavLink to="/myprocedures">My Procedures</NavLink>
+                            
+                        
                         
                         <Router>
+                        <NavLink to="/procedureform"
+                                 style={navLinks}
+                                 >Add Procedure</NavLink>
+                        
+                        <NavLink to="/myprocedures"
+                                 style={navLinks}
+                                 >My Procedures</NavLink>
                         
                         <Route path ="/procedureform" component={ProcedureForm}/>
                         <Route path ="/myprocedures" component={MyProcedures}/>
@@ -25,7 +33,7 @@ class Dashboard extends Component {
 
                         
                         </Router>
-                        </div>
+                        
                     )
                 }
             }
