@@ -1,6 +1,11 @@
 import {
     REGISTER,
-    REGISTER_SUCCESS
+    REGISTER_SUCCESS,
+    ADD_PROCEDURE,
+    PROCEDURE_ADDED,
+    GET_PROCEDURE,
+    GET_COMPLETE,
+    GET_FAILURE
     
    
 
@@ -13,7 +18,10 @@ const initialState = {
     loggingIn: false,
     savingUser: false,
     updatingProcedure: false,
-    error: null
+    addingProcedure: false,
+    error: null,
+    procedures: [],
+  
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -32,7 +40,33 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 user: action.payload
             }
+        case ADD_PROCEDURE:
+            return {
+               ...state,
+               addingProcedure: true 
+            }
+        case PROCEDURE_ADDED:
+            return {
+                ...state,
+                addingProcedure: false
+            }
 
+        case GET_PROCEDURE:
+            return {
+                ...state,
+                
+            }
+        case GET_COMPLETE:
+            return {
+               ...state,
+               procedure: action.payload
+            }
+
+        case GET_FAILURE:
+            return {
+               
+              
+            }
             
          
            

@@ -64,7 +64,6 @@ class Register extends Component {
     render(){
         return(
             <div style={mainDiv} >
-                <h1>Welcome to Revolutionize Health</h1> 
                <h3>We are just going to need to gather a little information from you!</h3>
                <p>We promise it will be quick and painless!</p>
                <form className="card-1" onSubmit={this.submitHandle}>

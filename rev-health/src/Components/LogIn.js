@@ -4,20 +4,15 @@ import { login } from '../Actions';
 import Button from "@material-ui/core/Button";
 import './Components.css';
 
+
+
 const mainDiv={
     display:'flex',
     justifyContent:'center'
 }
-const form = {
-    display: 'flex',
-    marginTop: '10%',
-    width: '500px',
-    borderRadius: '5px',
-    padding: '3%',
-    flexDirection: 'column',
-    border: '2px solid black',
-    alignItems: 'center'
-    
+const img={
+    height: '50%',
+    width: '50%'
 }
 
 const input = {
@@ -62,6 +57,8 @@ class LogIn extends React.Component{
         return (
             <div style={mainDiv}>
                 <form className='card-1' onSubmit={this.login}>
+                
+                
                 <p style={title}>E-mail:</p>
                     <input style={input}
                         type="text"

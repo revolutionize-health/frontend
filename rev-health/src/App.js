@@ -4,6 +4,7 @@ import Register from './Components/Register';
 import LogIn from './Components/LogIn';
 import PrivateRoute from './Components/PrivateRoute';
 import ProcedureLookUp from './Components/ProcedureLookup';
+import Home from './Components/Home'
 import Dashboard from './Components/DashBoard'
 import {Route} from 'react-router-dom';
 import './App.css';
@@ -15,7 +16,7 @@ class App extends Component {
       <div className="App">
       <div><Header className="App-header" /></div>
        
-       
+        <Route exact path = "/" component={Home}/>
         <Route path="/login" component={LogIn}/>
         <Route path="/register" component={Register}/>
         <Route path="/procedures" component={ProcedureLookUp} />
