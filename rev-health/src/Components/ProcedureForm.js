@@ -1,8 +1,28 @@
 import React, { Component } from 'react';
+import Button from "@material-ui/core/Button";
+import { connect } from 'react-redux';
+import { addProcedure } from '../Actions';
 
 
 
+const form = {
+    display: 'flex',
+    justifyContent: 'center'
+}
+const input = {
+    border: 'none',
+    borderBottom: '2px solid black',
+    width: '300px',
+    height: '25px',
+    
+    margin:'5px 10px'
+}
 
+const title={
+    fontSize: '1rem',
+    textDecoration: 'underine'
+    
+}
 
 class ProcedureForm extends Component {
 constructor(){
@@ -10,15 +30,7 @@ constructor(){
     this.state={
             
         procedure_name:"",
-        hospital:"",
-        address:"",
-        city:"",
-        state:"",
-        zip:"",
-        total_cost:"",
-        insurance_pmt:"",
-        insurance_adj:"",
-        out_of_pkt:""
+        cost:""
         
     }
 }
@@ -32,75 +44,44 @@ constructor(){
             });
         };
 
+        
+
+        handleSubmit = event => {
+            event.preventDefault();
+            this.props.addProcedure(this.state)      
+        }
+
         render(){
             return(
                 <div>
                     
-                    <p>User can add, edit or delete procedures</p>
-                    <form>
-                    <p>Procedure Name:</p>
+                    
+                    <form onSubmit={this.handleSubmit}>
+                    <p style={title}>Procedure Name:</p>
                     <input type="text"
                            name="procedure_name"
                            placeholder="procedure"
                            value={this.state.procedure} 
                            onChange={this.handleChange}
+                           style={input}
                            
                            >
                     </input>
-
-                    <p>Hospital:</p>
-                    <input type="text"
-                           name="hospital name"
-                           placeholder="hospital"
-                           value={this.state.hospital} 
-                           onChange={this.handleChange}
-                           
-                           >
-                    </input>
-                    
-                    <p>Address:</p>
-                    <input type="text"
-                           name="address"
-                           required="required"
-                           placeholder="Address"
-                           value={this.state.address} 
-                           onChange={this.handleChange}
-                           
-                           >
-                    </input>
-                    
-                    <p>City:</p>
-                    <input type="text"
-                           name="city"
-                           required="required"
-                           placeholder="City"
-                           value={this.state.city} 
-                           onChange={this.handleChange}
-                           
-                           >
-                    </input>
-
-                    <p>State:</p>
-                    <input type="text"
-                           name="state"
-                           required="required"
-                           placeholder="state"
-                           value={this.state.state} 
-                           onChange={this.handleChange}
-                           
-                           >
-                    </input>
-
-                    <p>Zip:</p>
+                    <p style={title}>Procedure Cost $:</p>
                     <input type="number"
-                           name="zip"
-                           required="required"
-                           placeholder="zip"
-                           value={this.state.zip} 
-                           onChange={this.handleChange}
-                           
-                           >
-                    </input>
+                            name="cost"
+                            placeholder="cost"
+                            value={this.state.cost}
+                            onChange={this.handleChange}
+                            style={input}></input>
+                    <div style={form}>
+                    <div>
+                    
+                    </div>
+                    </div>
+                    <Button variant="contained" color="primary" type="submit">
+                            Add Procedure
+                            </Button>
 
                     </form>
                 </div>
@@ -110,4 +91,10 @@ constructor(){
 
 
 
-export default ProcedureForm 
+    const mapStateToProps = state => ({
+        addingProcedure: state.addingProcedure,
+        error: state.error,
+        data: state.data
+    })
+    
+    export default connect(mapStateToProps, {addProcedure}) (ProcedureForm);

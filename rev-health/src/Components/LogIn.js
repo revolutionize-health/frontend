@@ -1,7 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../Actions';
+import Button from "@material-ui/core/Button";
+import './Components.css';
 
+
+
+const mainDiv={
+    display:'flex',
+    justifyContent:'center'
+}
+const img={
+    height: '50%',
+    width: '50%'
+}
+
+const input = {
+    border: 'none',
+    borderBottom: '2px solid black',
+    width: '200px',
+    height: '25px',
+    marginBottom: '10px'
+}
+
+const title={
+    fontSize: '1rem',
+    textDecoration: 'underine'
+    
+}
 class LogIn extends React.Component{
     state = {
         credentials: {
@@ -29,9 +55,12 @@ class LogIn extends React.Component{
 
     render(){
         return (
-            <div>
-                <form onSubmit={this.login}>
-                    <input 
+            <div style={mainDiv}>
+                <form className='card-1' onSubmit={this.login}>
+                
+                
+                <p style={title}>E-mail:</p>
+                    <input style={input}
                         type="text"
                         name="email"
                         required='required'
@@ -39,8 +68,9 @@ class LogIn extends React.Component{
                         onChange={this.handleChange}
                         placeholder="email..."
                     />
-
+                    <p style={title}>Password:</p>
                     <input 
+                        style={input}
                         type="password"
                         name="password"
                         required='required'
@@ -48,7 +78,9 @@ class LogIn extends React.Component{
                         onChange={this.handleChange}
                         placeholder="password..."
                     />
-                    <button >SUBMIT</button>
+                   <Button variant="contained" color= "#AD8E40" type="submit">
+                            Log In
+                            </Button>
                     {this.props.loggingIn ? (
                             <h1>Loggin In</h1>
                         ) : (
@@ -68,3 +100,4 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, {login}) (LogIn);
+
