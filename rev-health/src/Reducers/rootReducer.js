@@ -5,22 +5,25 @@ import {
     PROCEDURE_ADDED,
     GET_PROCEDURE,
     GET_COMPLETE,
-    GET_FAILURE
-    
-   
-
+    GET_FAILURE,
+    ADD_DOCTOR,
+    DOCTOR_ADDED,
+    INSURER_ADDED,
+    ADD_INSURER
 } from '../Actions';
 
 const initialState = {
-    deletingPost: false,
-    fetchingPosts: false,
+    savingUser: false,
     user: [],
     loggingIn: false,
-    savingUser: false,
     updatingProcedure: false,
     addingProcedure: false,
     error: null,
     procedures: [],
+    gettingProcedures: false,
+    addingDoctor:false,
+    addingInsurer:false,
+    doctors:[]
   
 }
 
@@ -48,18 +51,21 @@ const rootReducer = (state = initialState, action) => {
         case PROCEDURE_ADDED:
             return {
                 ...state,
-                addingProcedure: false
+                addingProcedure: false,
+                gettingProcedures: true
             }
 
         case GET_PROCEDURE:
             return {
-                ...state,
+               ...state,
+               procedures: action.payload,
+                gettingProcedures: true
                 
             }
         case GET_COMPLETE:
             return {
                ...state,
-               procedure: action.payload
+               procedures: action.payload
             }
 
         case GET_FAILURE:
@@ -67,7 +73,30 @@ const rootReducer = (state = initialState, action) => {
                
               
             }
+
+        case ADD_DOCTOR:
+            return {
+               ...state,
+               addingDoctor: true 
+            }
+
+        case DOCTOR_ADDED:
+            return {
+                ...state,
+                addingDoctor: false
+            }
+
+            case ADD_INSURER:
+            return{
+                addingInsurer: true
+            }
             
+            case INSURER_ADDED:
+            return {
+                ...state,
+                addingInsurer: false
+                
+            }
          
            
 

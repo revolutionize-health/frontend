@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../Actions';
 import Button from "@material-ui/core/Button";
+import {NavLink} from 'react-router-dom'
 import './Components.css';
 
 
@@ -9,10 +10,6 @@ import './Components.css';
 const mainDiv={
     display:'flex',
     justifyContent:'center'
-}
-const img={
-    height: '50%',
-    width: '50%'
 }
 
 const input = {
@@ -27,6 +24,10 @@ const title={
     fontSize: '1rem',
     textDecoration: 'underine'
     
+}
+
+const link={
+    textDecoration: 'none'
 }
 class LogIn extends React.Component{
     state = {
@@ -87,6 +88,8 @@ class LogIn extends React.Component{
                             null
                         )
                     }
+                    <p>Don't have an account?</p>
+                    <NavLink style={link} to="/register" >Register Here</NavLink>
                 </form>
             </div>
         )

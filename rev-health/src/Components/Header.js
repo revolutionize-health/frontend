@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {NavLink} from 'react-router-dom'
 
 const mainDiv = {
@@ -33,20 +33,36 @@ const link ={
 
 
 
-const Header = () => {
+class Header extends Component {
+   
+    render(){
+
+        let log;
+        const isLoggedIn = localStorage.getItem('token');
+        if (isLoggedIn) {
+            log = <NavLink to="/" style={links} onClick={()=>localStorage.removeItem('token')} >LogOut</NavLink>;
+          } else {
+            log = <NavLink to="/login" style={links} >LogIn</NavLink>;
+          }
+
     return (
+
         <div style={mainDiv}>
-            <NavLink to="/dashboard" style={link}><i class="fas fa-columns"></i> MyDashboard</NavLink>
-            <NavLink to="/procedures" style={links}><i  class="fas fa-home"></i> View Procedures</NavLink>
+            <NavLink to="/dashboard" style={link}><i className="fas fa-columns"></i> MyDashboard</NavLink>
+            <NavLink to="/procedures" style={links}><i  className="fas fa-home"></i> View Procedures</NavLink>
             <span style={links}> | </span>
-            <NavLink to="/login" style={links}><i class="far fa-user"></i>  Log In</NavLink>
-            <span style={links}> | </span>
-            <NavLink to="/register" style={links}><i  class="fas fa-user-plus"></i> Create Account</NavLink>
+
+            {log}
+        
+            
+            
+            
+
             
         </div>
     )
 }
-
+}
 
 
 export default Header
