@@ -115,7 +115,7 @@ class Register extends Component {
                     <span style={title}>Currently Insured?</span>
                     <input type="checkbox"></input>
                     
-                    <Button variant="contained" color="primary">
+                    <Button variant="contained" color="primary" type="submit">
                             Register User
                             </Button>
                 </form>

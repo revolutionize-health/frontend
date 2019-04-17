@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from "@material-ui/core/Button";
 import { connect } from 'react-redux';
-import { addProcedure } from '../Actions';
+import { addInsurer } from '../Actions';
 
 
 
@@ -24,13 +24,13 @@ const title={
     
 }
 
-class ProcedureForm extends Component {
+class AddDoctor extends Component {
 constructor(){
     super()
     this.state={
             
-        procedure_name:"",
-        cost:""
+        insurer_name:"",
+
         
     }
 }
@@ -44,17 +44,9 @@ constructor(){
             });
         };
 
-        
-
         handleSubmit = event => {
             event.preventDefault();
-            this.props.addProcedure(this.state)   
-            alert("your procedure has been added")
-            this.setState({
-            procedure_name: "",
-            cost: "",
-           
-        })   
+            this.props.addInsurer(this.state)      
         }
 
         render(){
@@ -63,23 +55,16 @@ constructor(){
                     
                     
                     <form onSubmit={this.handleSubmit}>
-                    <p style={title}>Procedure Name:</p>
+                    <p style={title}>Insurer Name:</p>
                     <input type="text"
-                           name="procedure_name"
-                           placeholder="procedure"
-                           value={this.state.procedure} 
+                           name="insurer_name"
+                           placeholder="Name"
+                           value={this.state.insurer_name} 
                            onChange={this.handleChange}
                            style={input}
                            
                            >
                     </input>
-                    <p style={title}>Procedure Cost $:</p>
-                    <input type="number"
-                            name="cost"
-                            placeholder="cost"
-                            value={this.state.cost}
-                            onChange={this.handleChange}
-                            style={input}></input>
                     <div style={form}>
                     <div>
                     
@@ -98,9 +83,8 @@ constructor(){
 
 
     const mapStateToProps = state => ({
-        addingProcedure: state.addingProcedure,
-        error: state.error,
-        data: state.data
+        addingDoctor: state.addingDoctor
+        
     })
     
-    export default connect(mapStateToProps, {addProcedure}) (ProcedureForm);
+    export default connect(mapStateToProps, {addInsurer}) (AddDoctor);

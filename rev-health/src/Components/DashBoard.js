@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import ProcedureForm from './ProcedureForm'
 import MyProcedures from './MyProcedures'
-
+import AddDoctor from './AddDoctor'
+import AccountDetails from './AccountDetails'
+import AddInsurer from './AddInsurer'
 import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom'
 
 
@@ -24,17 +26,32 @@ class Dashboard extends Component {
                         <NavLink to="/procedureform"
                                  style={navLinks}
                                  >Add Procedure</NavLink>
+                          <NavLink    
+                                style={navLinks}
+                                to="/doctorform"
+                                >Add Doctor</NavLink>
+                         <NavLink 
+                                style={navLinks}
+                                to="/insurer"
+                                >Add Insurer</NavLink>
                         
                         <NavLink to="/myprocedures"
                                  style={navLinks}
                                  >My Procedures</NavLink>
+
+                        
                         <NavLink 
                                  style={navLinks}
                                  
-                                 to="/main"
-                                 >Log Out</NavLink>
+                                 to="/accountsettings"
+                                 >Account Settings</NavLink>
+                       
+                      
                         <Route path ="/procedureform" component={ProcedureForm}/>
                         <Route path ="/myprocedures" component={MyProcedures}/>
+                        <Route path ="/doctorform" component={AddDoctor} />
+                        <Route path ="/accountsettings" component={AccountDetails} />
+                        <Route path ="/insurer" component={AddInsurer} />
                         
                         </Router>
                         

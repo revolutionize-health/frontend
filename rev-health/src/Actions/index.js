@@ -13,6 +13,18 @@ export const PROCEDURE_ADDED="PROCEDURE_ADDED"
 export const GET_PROCEDURE="GET_PROCEDURE"
 export const GET_COMPLETE="GET_COMPLETE"
 export const GET_FAILURE="GET_FAILURE"
+export const ADD_DOCTOR="ADD_DOCTOR"
+export const DOCTOR_ADDED="DOCTOR_ADDED"
+export const INSURER_ADDED="INSURER_ADDED"
+export const GET_DOCTOR="GET_DOCTOR"
+export const GET_DOCTOR_COMPLETE="GET_DOCTOR_COMPLETE"
+export const ADD_INSURER="ADD_INSURER"
+export const GET_INSURER="GET_INSURER"
+export const GET_INSURER_COMPLETE="GET_INSURER_COMPLETE"
+export const DELETE_PROCEDURE="DELETE_PROCEDURE"
+export const DELETE_SUCCESS="DELETE_SUCCESS"
+export const DELETE_DOCTOR="DELETE_DOCTOR"
+export const DELETE_INSURER="DELETE_INSURER"
 
 
 
@@ -25,6 +37,7 @@ export const register = user => dispatch => {
         console.log("REGISTERED", res);
         localStorage.setItem('token', res.data.token);
         dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+        getUser();
       })
       .catch(err => ({ err }));
   };
@@ -46,7 +59,23 @@ export const register = user => dispatch => {
         })
 }
 
+
+
 export const getData = () => {
+    axios
+        .get("https://revolutionize-health.herokuapp.com/api/auth/login", {
+            headers: { Authorization: localStorage.getItem('token')}
+        })
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+export const getUser = () => {
     axios
         .get("https://revolutionize-health.herokuapp.com/api/auth/login", {
             headers: { Authorization: localStorage.getItem('token')}
@@ -67,25 +96,109 @@ export const addProcedure = procedure => dispatch => {
       .post('https://revolutionize-health.herokuapp.com/api/procedures', procedure)
       .then(response => {
         console.log("ADD PROCEDURE", response);
-        dispatch({ type: PROCEDURE_ADDED, payload: response.data });
-        getProcedure();
+        dispatch({ type: PROCEDURE_ADDED, payload: response.data});
       })
       
-     
+      
+      .catch(err => ({ err }));
+      
+  };
 
+  export const getProcedures = () => dispatch => {
+      console.log("get procedures")
+      
+	return axios
+	  .get(`https://revolutionize-health.herokuapp.com/api/procedures`)
+	  .then(response => {
+        console.log(response.data);
+        dispatch({type: GET_PROCEDURE, payload: response.data})
+	    
+	  })
+	  .catch(err => ({ err }))
+	};
+
+    export const deleteProcedure = id => dispatch => {
+        dispatch({ type: DELETE_PROCEDURE });
+        axios
+          .delete(`https://revolutionize-health.herokuapp.com/api/procedures/${id}`)
+          .then(response => {
+            console.log(response.data);
+            
+          })
+          .catch(err => ({ err }))
+        };
+   
+export const addDoctor = doctor => dispatch => {
+    console.log("action call, POST");
+    dispatch({ type: ADD_DOCTOR });
+    axios
+      .post('https://revolutionize-health.herokuapp.com/api/doctors', doctor)
+      .then(response => {
+        console.log("ADD PROCEDURE", response);
+        dispatch({ type: DOCTOR_ADDED, payload: response.data });
+        
+      })
       .catch(err => ({ err }));
   };
 
-  export const getProcedure = () => dispatch => {
-    console.log("action call, FETCH")
-    dispatch({ type: GET_PROCEDURE});
-    return axios
-        .get("https://revolutionize-health.herokuapp.com/api/procedures")
-        .then(res => {
-            console.log(res)
-            dispatch({ type: GET_COMPLETE, payload: res.data})
-        })
-        .catch(err => {
-            dispatch({ type: GET_FAILURE, payload: err})
-        })
-}
+  export const getDoctor = () => dispatch => {
+    console.log("get procedures")
+    
+  return axios
+    .get(`https://revolutionize-health.herokuapp.com/api/doctors`)
+    .then(response => {
+      console.log(response.data);
+      dispatch({type: GET_DOCTOR, payload: response.data})
+      
+    })
+    .catch(err => ({ err }))
+  };
+
+  export const deleteDoctor = id => dispatch => {
+    dispatch({ type: DELETE_DOCTOR });
+    axios
+      .delete(`https://revolutionize-health.herokuapp.com/api/doctors/${id}`)
+      .then(response => {
+        console.log(response.data);
+        
+      })
+      .catch(err => ({ err }))
+    };
+
+
+  export const addInsurer = insurer => dispatch => {
+    console.log("action call, POST");
+    dispatch({ type: ADD_INSURER });
+    axios
+      .post('https://revolutionize-health.herokuapp.com/api/insurers', insurer)
+      .then(response => {
+        console.log("ADD INSURER", response);
+        dispatch({ type: INSURER_ADDED, payload: response.data });
+        
+      })
+      
+      .catch(err => ({ err }));
+  };
+
+  export const getInsurer = () => dispatch => {
+    console.log("get insurer")
+    dispatch({type: GET_INSURER})
+  return axios
+    .get(`https://revolutionize-health.herokuapp.com/api/insurers`)
+    .then(response => {
+      console.log(response.data);
+      dispatch({ type: GET_INSURER_COMPLETE, payload: response.data });
+    })
+    .catch(err => ({ err }))
+  };
+
+  export const deleteInsurer = id => dispatch => {
+    dispatch({ type: DELETE_INSURER });
+    axios
+      .delete(`https://revolutionize-health.herokuapp.com/api/insurers/${id}`)
+      .then(response => {
+        console.log(response.data);
+        
+      })
+      .catch(err => ({ err }))
+    };

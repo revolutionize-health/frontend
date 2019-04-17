@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { Component } from 'react';
+import ProcedureList from './ProcedureList'
 
-const MyProcedures = () =>{
-    
-    return(
-        <div>
-            <h1>My Procedures</h1>
-        </div>
-    )
+class Procedures extends Component {
+    constructor(){
+        super()
+
+    }
+
+    render(){
+        return(
+            <div>
+                <ProcedureList/>
+            </div>
+        )
+    }
 }
-export default MyProcedures
+
+
+export default Procedures
