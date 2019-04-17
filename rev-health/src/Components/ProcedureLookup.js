@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ProcedureCard from './ProcedureCard'
+import ProcedureList from './ProcedureList'
 
 class Procedures extends Component {
     constructor(){
@@ -10,7 +10,7 @@ class Procedures extends Component {
     render(){
         return(
             <div>
-                <ProcedureCard/>
+                <ProcedureList/>
             </div>
         )
     }

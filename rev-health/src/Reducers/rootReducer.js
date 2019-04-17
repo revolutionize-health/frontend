@@ -9,7 +9,9 @@ import {
     ADD_DOCTOR,
     DOCTOR_ADDED,
     INSURER_ADDED,
-    ADD_INSURER
+    ADD_INSURER,
+    DELETE_PROCEDURE,
+    DELETE_SUCCESS
 } from '../Actions';
 
 const initialState = {
@@ -21,9 +23,11 @@ const initialState = {
     error: null,
     procedures: [],
     gettingProcedures: false,
+    deletingProcedures: false,
     addingDoctor:false,
     addingInsurer:false,
-    doctors:[]
+    doctors:[],
+
   
 }
 
@@ -67,6 +71,10 @@ const rootReducer = (state = initialState, action) => {
                ...state,
                procedures: action.payload
             }
+        case DELETE_PROCEDURE:
+        return {...state,  deletingProcedures: true }
+
+       
 
         case GET_FAILURE:
             return {

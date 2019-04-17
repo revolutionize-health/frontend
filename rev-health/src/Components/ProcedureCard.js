@@ -1,6 +1,7 @@
 import React from 'react';
 import './Components.css';
 import { connect } from "react-redux";
+import {deleteProcedure} from '../Actions'
 
 
 
@@ -16,18 +17,21 @@ class ProcedureCard extends React.Component{
 
     }
 
-    clickHandle = id => {
-        console.log("clicked!");
-        this.props.deleteProcedure(id);
-      };
+    clickHandler = () => {
+        this.props.deleteProcedure (this.props.id)
+        
+    }
       
       render(){
+          console.log("props", this.props)
         return (
             <div style={mainDiv}>
-            <div 
-                className={'card-1'}
-                key={this.props.procedure.id}>
-                <i  className="fas fa-ellipsis-v menu"></i>
+            <div className={'card-2'}>
+              <p>Procedure Name: {this.props.name}</p>
+                <span>Procedure Cost: {this.props.cost}</span>
+                <span>{this.props.procedures}</span>
+                <span>Edit Procedure</span>
+                <button onClick={this.clickHandler}><i className="far fa-minus-square"></i></button>
                 
             </div>
             </div>
@@ -47,5 +51,5 @@ const mapStateToProps = state => (
   
   export default connect(
     mapStateToProps,
-    {}
+    {deleteProcedure}
   )(ProcedureCard);

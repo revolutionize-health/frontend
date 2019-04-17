@@ -30,20 +30,22 @@ class Dashboard extends Component {
                                 style={navLinks}
                                 to="/doctorform"
                                 >Add Doctor</NavLink>
+                         <NavLink 
+                                style={navLinks}
+                                to="/insurer"
+                                >Add Insurer</NavLink>
                         
                         <NavLink to="/myprocedures"
                                  style={navLinks}
                                  >My Procedures</NavLink>
+
                         
                         <NavLink 
                                  style={navLinks}
                                  
                                  to="/accountsettings"
                                  >Account Settings</NavLink>
-                        <NavLink 
-                                style={navLinks}
-                                to="/insurer"
-                                >Add Insurer</NavLink>
+                       
                       
                         <Route path ="/procedureform" component={ProcedureForm}/>
                         <Route path ="/myprocedures" component={MyProcedures}/>

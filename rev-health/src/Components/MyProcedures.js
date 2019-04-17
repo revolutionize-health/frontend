@@ -1,38 +1,20 @@
-import React from 'react';
-import ProcedureCard from './ProcedureCard';
-import {getProcedures} from '../Actions/'
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import ProcedureList from './ProcedureList'
 
+class Procedures extends Component {
+    constructor(){
+        super()
 
-class ProcedureList extends React.Component {
-   
-    componentDidMount() {
-        this.props.getProcedures()
     }
-    
-    
-    
-    render() {
-        console.log('these are procedure' , this.props.procedures)
-        return (
+
+    render(){
+        return(
             <div>
-                {this.props.procedures.map(procedures => {
-                    return <ProcedureCard procedures={procedures} />
-                })}
+                <ProcedureList/>
             </div>
         )
     }
 }
 
 
-const mapStateToProps = state => (
-    
-    {
-      procedures: state.procedures
-    }
-  );
-  
-  export default connect(
-    mapStateToProps,
-    {getProcedures}
-  )(ProcedureList);
+export default Procedures
