@@ -142,13 +142,14 @@ export const addDoctor = doctor => dispatch => {
   };
 
   export const getDoctor = () => dispatch => {
-    console.log("get doctor")
-    dispatch({type: GET_DOCTOR})
+    console.log("get procedures")
+    
   return axios
     .get(`https://revolutionize-health.herokuapp.com/api/doctors`)
     .then(response => {
       console.log(response.data);
-      dispatch({ type: GET_DOCTOR_COMPLETE, payload: response.data });
+      dispatch({type: GET_DOCTOR, payload: response.data})
+      
     })
     .catch(err => ({ err }))
   };

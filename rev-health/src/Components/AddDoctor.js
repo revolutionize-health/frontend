@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from "@material-ui/core/Button";
 import { connect } from 'react-redux';
 import { addDoctor} from '../Actions';
+import DoctorList from './DoctorList'
 
 
 
@@ -86,6 +87,7 @@ constructor(){
                             </Button>
 
                     </form>
+                    <DoctorList/>
                 </div>
             )
         }

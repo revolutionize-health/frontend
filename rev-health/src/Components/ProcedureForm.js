@@ -48,7 +48,13 @@ constructor(){
 
         handleSubmit = event => {
             event.preventDefault();
-            this.props.addProcedure(this.state)      
+            this.props.addProcedure(this.state)   
+            alert("your procedure has been added")
+            this.setState({
+            procedure_name: "",
+            cost: "",
+           
+        })   
         }
 
         render(){

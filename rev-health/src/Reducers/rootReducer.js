@@ -11,7 +11,8 @@ import {
     INSURER_ADDED,
     ADD_INSURER,
     DELETE_PROCEDURE,
-    DELETE_SUCCESS
+    DELETE_SUCCESS,
+    GET_DOCTOR
 } from '../Actions';
 
 const initialState = {
@@ -92,6 +93,12 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 addingDoctor: false
+            }
+
+        case GET_DOCTOR:
+            return{
+                ...state,
+                doctors: action.payload
             }
 
             case ADD_INSURER:
