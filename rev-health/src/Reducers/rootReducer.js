@@ -5,7 +5,6 @@ import {
     PROCEDURE_ADDED,
     GET_PROCEDURE,
     GET_COMPLETE,
-    GET_FAILURE,
     ADD_DOCTOR,
     DOCTOR_ADDED,
     INSURER_ADDED,
@@ -14,7 +13,9 @@ import {
     GET_INSURER,
     DELETE_INSURER,
     GET_DOCTOR,
-    DELETE_DOCTOR
+    DELETE_DOCTOR,
+    UPDATE_PROCEDURE,
+    PROCEDURE_UPDATED
 } from '../Actions';
 
 const initialState = {
@@ -34,6 +35,7 @@ const initialState = {
     deletingProcedures: false,
     addingDoctor:false,
     addingInsurer:false,
+    procedureUpdating: false,
    
 
   
@@ -124,10 +126,17 @@ const rootReducer = (state = initialState, action) => {
             }
 
             case DELETE_INSURER:
-            return {...state,  deletingInsurer: true }
+            return {...state,  
+                deletingInsurer: true }
 
-         
-           
+            case UPDATE_PROCEDURE:
+            return{
+                procedureUpdating: true,
+                ...state
+            }
+
+            case PROCEDURE_UPDATED:
+            return { ...state}
 
     default: return state;    
     }

@@ -20,6 +20,8 @@ export const GET_DOCTOR="GET_DOCTOR"
 export const GET_DOCTOR_COMPLETE="GET_DOCTOR_COMPLETE"
 export const ADD_INSURER="ADD_INSURER"
 export const GET_INSURER="GET_INSURER"
+export const UPDATE_PROCEDURE="UPDATE_PROCEDURE"
+export const PROCEDURE_UPDATED="PROCEDURE_UPDATED"
 export const DELETE_PROCEDURE="DELETE_PROCEDURE"
 export const DELETE_SUCCESS="DELETE_SUCCESS"
 export const DELETE_DOCTOR="DELETE_DOCTOR"
@@ -126,6 +128,18 @@ export const addProcedure = procedure => dispatch => {
           })
           .catch(err => ({ err }))
         };
+
+        export const updateProcedure = updateProcedure => dispatch => {
+            dispatch({ type: UPDATE_PROCEDURE });
+            axios
+              .put(`https://revolutionize-health.herokuapp.com/api/procedures/${updateProcedure.id}`, updateProcedure)
+              .then(response => {
+                console.log("this is the response", response.data);
+                dispatch({type: PROCEDURE_UPDATED, payload: response.data})
+                
+              })
+              .catch(err => ({ err }))
+            };
    
 export const addDoctor = doctor => dispatch => {
     console.log("action call, POST");
