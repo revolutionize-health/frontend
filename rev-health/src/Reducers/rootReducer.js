@@ -11,31 +11,37 @@ import {
     INSURER_ADDED,
     ADD_INSURER,
     DELETE_PROCEDURE,
-    DELETE_SUCCESS,
-    GET_DOCTOR
+    GET_INSURER,
+    DELETE_INSURER,
+    GET_DOCTOR,
+    DELETE_DOCTOR
 } from '../Actions';
 
 const initialState = {
-    savingUser: false,
+    
+    doctors:[],
+    insurers:[],
     user: [],
+    procedures: [],
+    savingUser: false,
     loggingIn: false,
     updatingProcedure: false,
     addingProcedure: false,
+    deletingInsurer: false,
     error: null,
     procedures: [],
     gettingProcedures: false,
     deletingProcedures: false,
     addingDoctor:false,
     addingInsurer:false,
-    doctors:[],
+   
 
   
 }
 
 const rootReducer = (state = initialState, action) => {
     switch(action.type) {
-        
-
+    
         case REGISTER:
         
             return {
@@ -73,15 +79,9 @@ const rootReducer = (state = initialState, action) => {
                procedures: action.payload
             }
         case DELETE_PROCEDURE:
-        return {...state,  deletingProcedures: true }
+        return {...state,  
+            deletingProcedures: true }
 
-       
-
-        case GET_FAILURE:
-            return {
-               
-              
-            }
 
         case ADD_DOCTOR:
             return {
@@ -100,6 +100,10 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 doctors: action.payload
             }
+         case DELETE_DOCTOR:
+            return{
+                ...state
+            }
 
             case ADD_INSURER:
             return{
@@ -112,6 +116,16 @@ const rootReducer = (state = initialState, action) => {
                 addingInsurer: false
                 
             }
+            case GET_INSURER:
+            return{
+
+                ...state,
+                insurers: action.payload
+            }
+
+            case DELETE_INSURER:
+            return {...state,  deletingInsurer: true }
+
          
            
 

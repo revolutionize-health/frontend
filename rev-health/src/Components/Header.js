@@ -8,7 +8,8 @@ background: '#062a3a',
 display: 'block',
 alignItems: 'center',
 justifyContent: 'flex-end',
-boxShadow: '0 8px 6px -6px #999'
+boxShadow: '0 8px 6px -6px #999',
+zIndex: '2'
 
 
 }
@@ -40,7 +41,7 @@ class Header extends Component {
         let log;
         const isLoggedIn = localStorage.getItem('token');
         if (isLoggedIn) {
-            log = <NavLink to="/" style={links} onClick={()=>localStorage.removeItem('token')} >LogOut</NavLink>;
+            log = <NavLink to="/" style={links}  onClick={()=>localStorage.removeItem('token')} >LogOut</NavLink>;
           } else {
             log = <NavLink to="/login" style={links} >LogIn</NavLink>;
           }
