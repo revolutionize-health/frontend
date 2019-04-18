@@ -8,7 +8,8 @@ background: '#062a3a',
 display: 'block',
 alignItems: 'center',
 justifyContent: 'flex-end',
-boxShadow: '0 8px 6px -6px #999'
+boxShadow: '0 8px 6px -6px #999',
+zIndex: '2'
 
 
 }

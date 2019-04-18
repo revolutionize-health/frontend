@@ -51,7 +51,8 @@ constructor(){
 
         handleSubmit = event => {
             event.preventDefault();
-            this.props.addDoctor(this.state)      
+            this.props.addDoctor(this.state);
+               
         }
 
         render(){
@@ -82,7 +83,7 @@ constructor(){
                     
                     </div>
                     </div>
-                    <Button variant="contained" color="primary" type="submit">
+                    <Button variant="contained" color="primary" type="submit"  >
                             Add Procedure
                             </Button>
 

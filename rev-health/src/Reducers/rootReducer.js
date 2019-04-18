@@ -11,8 +11,10 @@ import {
     INSURER_ADDED,
     ADD_INSURER,
     DELETE_PROCEDURE,
-    DELETE_SUCCESS,
-    GET_DOCTOR
+    GET_INSURER,
+    DELETE_INSURER,
+    GET_DOCTOR,
+    DELETE_DOCTOR
 } from '../Actions';
 
 const initialState = {
@@ -21,6 +23,7 @@ const initialState = {
     loggingIn: false,
     updatingProcedure: false,
     addingProcedure: false,
+    deletingInsurer: false,
     error: null,
     procedures: [],
     gettingProcedures: false,
@@ -28,6 +31,7 @@ const initialState = {
     addingDoctor:false,
     addingInsurer:false,
     doctors:[],
+    insurers:[]
 
   
 }
@@ -100,6 +104,10 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 doctors: action.payload
             }
+         case DELETE_DOCTOR:
+            return{
+                ...state
+            }
 
             case ADD_INSURER:
             return{
@@ -112,6 +120,16 @@ const rootReducer = (state = initialState, action) => {
                 addingInsurer: false
                 
             }
+            case GET_INSURER:
+            return{
+
+                ...state,
+                insurers: action.payload
+            }
+
+            case DELETE_INSURER:
+            return {...state,  deletingInsurer: true }
+
          
            
 

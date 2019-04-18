@@ -8,7 +8,7 @@ import {deleteProcedure} from '../Actions'
 const mainDiv ={
     display: 'flex',
     justifyContent: 'center',
-    
+   
 }
 
 class ProcedureCard extends React.Component{
@@ -30,8 +30,8 @@ class ProcedureCard extends React.Component{
               <p>Procedure Name: {this.props.name}</p>
                 <span>Procedure Cost: {this.props.cost}</span>
                 <span>{this.props.procedures}</span>
-                <span>Edit Procedure</span>
-                <button onClick={this.clickHandler}><i className="far fa-minus-square"></i></button>
+                
+                
                 
             </div>
             </div>

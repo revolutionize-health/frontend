@@ -5,25 +5,23 @@ import { connect } from "react-redux";
 
 
 class DoctorList extends React.Component {
-   constructor(){
-       super()
+   constructor(props){
+       super(props)
       
    }
     componentDidMount() {
         this.props.getDoctor()
-        this.setState({
-            doctors: this.props.doctors
-          });
+        
     }
-    
-    
-    
+
+
     render() {
         console.log('these are doctors' , this.props.doctors)
         
         return (
             <div>
-               
+               {this.props.doctors.map(doctors =>
+	            <DoctorCard  doctors={doctors} key={doctors.doctor_id + doctors.doctor_name} id={doctors.doctor_id} />)}  
             </div>
 
         )
@@ -34,7 +32,7 @@ class DoctorList extends React.Component {
 const mapStateToProps = state => (
     
     {
-      procedures: state.doctors
+      doctors: state.doctors
     }
   );
   

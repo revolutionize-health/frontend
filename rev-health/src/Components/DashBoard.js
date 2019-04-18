@@ -9,7 +9,14 @@ import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom'
 
 const navLinks = {
     margin: '20px',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    color: '#062a3a'
+}
+const linkBar ={
+    padding: '10px',
+    marginTop: '10px',
+    background: '#AD8E40',
+    boxShadow: '0 8px 6px -6px #999',
 }
 
 
@@ -23,6 +30,8 @@ class Dashboard extends Component {
                         
                         
                         <Router>
+
+                        <div style={linkBar}>
                         <NavLink to="/procedureform"
                                  style={navLinks}
                                  >Add Procedure</NavLink>
@@ -40,13 +49,9 @@ class Dashboard extends Component {
                                  >My Procedures</NavLink>
 
                         
-                        <NavLink 
-                                 style={navLinks}
-                                 
-                                 to="/accountsettings"
-                                 >Account Settings</NavLink>
                        
-                      
+                       </div>
+
                         <Route path ="/procedureform" component={ProcedureForm}/>
                         <Route path ="/myprocedures" component={MyProcedures}/>
                         <Route path ="/doctorform" component={AddDoctor} />

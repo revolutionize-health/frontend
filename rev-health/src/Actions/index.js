@@ -20,7 +20,6 @@ export const GET_DOCTOR="GET_DOCTOR"
 export const GET_DOCTOR_COMPLETE="GET_DOCTOR_COMPLETE"
 export const ADD_INSURER="ADD_INSURER"
 export const GET_INSURER="GET_INSURER"
-export const GET_INSURER_COMPLETE="GET_INSURER_COMPLETE"
 export const DELETE_PROCEDURE="DELETE_PROCEDURE"
 export const DELETE_SUCCESS="DELETE_SUCCESS"
 export const DELETE_DOCTOR="DELETE_DOCTOR"
@@ -61,9 +60,9 @@ export const register = user => dispatch => {
 
 
 
-export const getData = () => {
+export const getData = (id) => {
     axios
-        .get("https://revolutionize-health.herokuapp.com/api/auth/login", {
+        .get(`https://revolutionize-health.herokuapp.com/api/users${id}`, {
             headers: { Authorization: localStorage.getItem('token')}
         })
         .then(res => {
@@ -182,12 +181,11 @@ export const addDoctor = doctor => dispatch => {
 
   export const getInsurer = () => dispatch => {
     console.log("get insurer")
-    dispatch({type: GET_INSURER})
   return axios
     .get(`https://revolutionize-health.herokuapp.com/api/insurers`)
     .then(response => {
       console.log(response.data);
-      dispatch({ type: GET_INSURER_COMPLETE, payload: response.data });
+      dispatch({ type: GET_INSURER, payload: response.data });
     })
     .catch(err => ({ err }))
   };

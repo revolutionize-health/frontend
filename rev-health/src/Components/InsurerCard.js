@@ -1,7 +1,7 @@
 import React from 'react';
 import './Components.css';
 import { connect } from "react-redux";
-import {deleteDoctor, getDoctor} from '../Actions'
+import {deleteInsurer, getInsurer} from '../Actions'
 
 
 
@@ -9,31 +9,30 @@ import {deleteDoctor, getDoctor} from '../Actions'
 const mainDiv ={
     display: 'flex',
     justifyContent: 'center',
-    paddingBottom: '20px'
+    
     
 }
 
-class DoctorCard extends React.Component{
+class InsurerCard extends React.Component{
     constructor(props){
         super(props);
 
     }
 
     clickHandler = () => {
-        this.props.deleteDoctor(this.props.id);
+        this.props.deleteInsurer(this.props.id);
         
         
     }
     
       render(){
-          console.log("props", this.props)
+          console.log("props", this.props.insurers.insurer_name)
 
         return (
             <div style={mainDiv}>
              <div className={'card-2'}>
-              <p>Doctor Name:  {this.props.doctors.doctor_name}</p>
-              <p>Doctor's Website:  {this.props.doctors.doctor_website}</p>
-                <span>Edit Doctor</span>
+              <p>Insurer Name:  {this.props.insurers.insurer_name}</p>
+                <span>Edit Insurer</span>
                 <button onClick={this.clickHandler}><i className="far fa-minus-square"></i></button>
                 
             </div>
@@ -49,11 +48,11 @@ class DoctorCard extends React.Component{
 const mapStateToProps = state => (
     
     {
-      doctors: state.doctors
+      insurers: state.insurers
     }
   );
   
   export default connect(
     mapStateToProps,
-    {deleteDoctor, getDoctor}
-  )(DoctorCard);
+    {deleteInsurer, getInsurer}
+  )(InsurerCard);
