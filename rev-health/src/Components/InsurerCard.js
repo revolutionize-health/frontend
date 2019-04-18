@@ -26,12 +26,12 @@ class InsurerCard extends React.Component{
     }
     
       render(){
-          console.log("props", this.props.insurers.insurer_name)
+          console.log("props", this.props.name)
 
         return (
             <div style={mainDiv}>
              <div className={'card-2'}>
-              <p>Insurer Name:  {this.props.insurers.insurer_name}</p>
+              <p>Insurer Name:  {this.props.name}</p>
                 <span>Edit Insurer</span>
                 <button onClick={this.clickHandler}><i className="far fa-minus-square"></i></button>
                 

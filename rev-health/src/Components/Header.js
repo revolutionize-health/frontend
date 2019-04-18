@@ -41,7 +41,7 @@ class Header extends Component {
         let log;
         const isLoggedIn = localStorage.getItem('token');
         if (isLoggedIn) {
-            log = <NavLink to="/" style={links} onClick={()=>localStorage.removeItem('token')} >LogOut</NavLink>;
+            log = <NavLink to="/" style={links}  onClick={()=>localStorage.removeItem('token')} >LogOut</NavLink>;
           } else {
             log = <NavLink to="/login" style={links} >LogIn</NavLink>;
           }

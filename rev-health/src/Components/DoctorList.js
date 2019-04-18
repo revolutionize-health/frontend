@@ -21,7 +21,7 @@ class DoctorList extends React.Component {
         return (
             <div>
                {this.props.doctors.map(doctors =>
-	            <DoctorCard  doctors={doctors} key={doctors.doctor_id + doctors.doctor_name} id={doctors.doctor_id} />)}  
+	            <DoctorCard  website={doctors.doctor_website}  key={doctors.doctor_id + doctors.doctor_name} name={doctors.doctor_name} id={doctors.doctor_id} />)}  
             </div>
 
         )

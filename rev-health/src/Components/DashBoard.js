@@ -34,18 +34,26 @@ class Dashboard extends Component {
                         <div style={linkBar}>
                         <NavLink to="/procedureform"
                                  style={navLinks}
+                                 activeStyle={{
+                                    textDecoration: "underline"}}
                                  >Add Procedure</NavLink>
                           <NavLink    
                                 style={navLinks}
                                 to="/doctorform"
+                                activeStyle={{
+                                    textDecoration: "underline"}}
                                 >Add Doctor</NavLink>
                          <NavLink 
                                 style={navLinks}
                                 to="/insurer"
+                                activeStyle={{
+                                    textDecoration: "underline"}}
                                 >Add Insurer</NavLink>
                         
                         <NavLink to="/myprocedures"
                                  style={navLinks}
+                                 activeStyle={{
+                                    textDecoration: "underline"}}
                                  >My Procedures</NavLink>
 
                         
