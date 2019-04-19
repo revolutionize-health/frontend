@@ -1,6 +1,7 @@
 import React from 'react';
 import './Components.css';
 import { connect } from "react-redux";
+import {Link} from 'react-router-dom'
 import {deleteProcedure} from '../Actions'
 
 
@@ -10,6 +11,8 @@ const mainDiv ={
     justifyContent: 'center',
    
 }
+
+
 
 class ProcedureCard extends React.Component{
     constructor(props){
@@ -30,6 +33,7 @@ class ProcedureCard extends React.Component{
               <p>Procedure Name: {this.props.name}</p>
                 <span>Procedure Cost: {this.props.cost}</span>
                 <span>{this.props.procedures}</span>
+                <Link to={`/update/${this.props.id}`} id={this.props.id} style={{ textDecoration: 'none', color: '#062a3a', cursor: 'pointer', marginTop: '10px' }}><i class="fas fa-pencil-alt"></i></Link>
                 
                 
                 

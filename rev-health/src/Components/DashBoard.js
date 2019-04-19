@@ -4,6 +4,7 @@ import MyProcedures from './MyProcedures'
 import AddDoctor from './AddDoctor'
 import AccountDetails from './AccountDetails'
 import AddInsurer from './AddInsurer'
+import UpdateProcedure from './UpdateProcedure'
 import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom'
 
 
@@ -65,6 +66,7 @@ class Dashboard extends Component {
                         <Route path ="/doctorform" component={AddDoctor} />
                         <Route path ="/accountsettings" component={AccountDetails} />
                         <Route path ="/insurer" component={AddInsurer} />
+                        <Route path ="/update" component={UpdateProcedure}/>
                         
                         </Router>
                         
