@@ -13,6 +13,11 @@ const mainDiv ={
     
 }
 
+const icon ={
+  background: 'none',
+  border: 'none'
+}
+
 class DoctorCard extends React.Component{
     constructor(props){
         super(props);
@@ -33,7 +38,7 @@ class DoctorCard extends React.Component{
               <p>Doctor Name:  {this.props.name}</p>
               <p>Doctor's Website:  {this.props.website}</p>
                 
-                <button onClick={this.clickHandler}><i className="far fa-minus-square"></i></button>
+                <button onClick={this.clickHandler} style={icon}><i className="far fa-minus-square"></i></button>
                 
             </div>
                 

@@ -49,11 +49,18 @@ constructor(){
 
         
 
-        handleSubmit = event => {
+        
+
+        handleSubmit = async event => {
             event.preventDefault();
-            this.props.addDoctor(this.state);
-               
-        }
+            await this.props.addDoctor(this.state);
+          
+            
+          
+            this.props.history.push("/procedures");
+          }
+
+
 
         render(){
             return(
