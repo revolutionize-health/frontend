@@ -52,14 +52,16 @@ class Register extends Component {
         });
       };
 
-  
+     ;
+
       submitHandle = async event => {
-        await this.props.register();
-      
+        event.preventDefault();
+        await this.props.register(this.state);
         
+        this.props.history.push("/dashboard")
       
-        this.props.history.push("/dashboard");
       }
+
 
     render(){
         return(
@@ -112,7 +114,8 @@ class Register extends Component {
                            style={input}
                            >
                     </input>
-                   
+                    <span style={title}>Currently Insured?</span>
+                    <input type="checkbox"></input>
                     
                     <Button variant="contained" color="primary" type="submit">
                             Register User

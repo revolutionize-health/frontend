@@ -30,7 +30,7 @@ export const DELETE_INSURER="DELETE_INSURER"
 
 
 export const register = user => dispatch => {
-    console.log("action call, POST", register);
+    console.log("action call, POST", user);
     dispatch({ type: REGISTER });
     axios
       .post('https://revolutionize-health.herokuapp.com/api/auth/registration', user) 
@@ -38,7 +38,7 @@ export const register = user => dispatch => {
         console.log("REGISTERED", res);
         localStorage.setItem('token', res.data.token);
         dispatch({ type: REGISTER_SUCCESS, payload: res.data });
-        getUser();
+       
       })
       .catch(err => ({ err }));
   };

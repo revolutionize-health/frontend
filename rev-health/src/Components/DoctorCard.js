@@ -24,9 +24,13 @@ class DoctorCard extends React.Component{
 
     }
 
-    clickHandler = () => {
-        this.props.deleteDoctor(this.props.id);
-         
+    
+
+    clickHandler = async event => {
+      event.preventDefault();
+      await this.props.deleteDoctor(this.props.id);
+  
+    
     }
     
       render(){
