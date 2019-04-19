@@ -44,18 +44,15 @@ constructor(){
             });
         };
 
-        
-
-        handleSubmit = event => {
+        handleSubmit = async event => {
             event.preventDefault();
-            this.props.addProcedure(this.state)   
-            alert("your procedure has been added")
-            this.setState({
-            procedure_name: "",
-            cost: "",
-           
-        })   
-        }
+            await this.props.addProcedure(this.state);
+          
+
+            this.props.history.push("/myprocedures");
+          }
+
+       
 
         render(){
             return(
@@ -86,8 +83,8 @@ constructor(){
                     </div>
                     </div>
                     <Button variant="contained" color="primary" type="submit">
-                            Add Procedure
-                            </Button>
+                     Add Procedure 
+                            </Button> 
 
                     </form>
                 </div>

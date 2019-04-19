@@ -30,7 +30,7 @@ export const DELETE_INSURER="DELETE_INSURER"
 
 
 export const register = user => dispatch => {
-    console.log("action call, POST", register);
+    console.log("action call, POST", user);
     dispatch({ type: REGISTER });
     axios
       .post('https://revolutionize-health.herokuapp.com/api/auth/registration', user) 
@@ -38,7 +38,7 @@ export const register = user => dispatch => {
         console.log("REGISTERED", res);
         localStorage.setItem('token', res.data.token);
         dispatch({ type: REGISTER_SUCCESS, payload: res.data });
-        getUser();
+       
       })
       .catch(err => ({ err }));
   };
@@ -129,10 +129,13 @@ export const addProcedure = procedure => dispatch => {
           .catch(err => ({ err }))
         };
 
-        export const updateProcedure = updateProcedure => dispatch => {
+        export const updateProcedure =  procedure => dispatch => {
             dispatch({ type: UPDATE_PROCEDURE });
             axios
-              .put(`https://revolutionize-health.herokuapp.com/api/procedures/${updateProcedure.id}`, updateProcedure)
+              .put(`https://revolutionize-health.herokuapp.com/api/procedures/${procedure.id}`,   {
+                "procedure_name" : procedure.procedure_name, 
+                 "cost": procedure.cost
+             })
               .then(response => {
                 console.log("this is the response", response.data);
                 dispatch({type: PROCEDURE_UPDATED, payload: response.data})
@@ -175,6 +178,7 @@ export const addDoctor = doctor => dispatch => {
         console.log(response.data);
         
       })
+      .then (() => getDoctor())
       .catch(err => ({ err }))
     };
 

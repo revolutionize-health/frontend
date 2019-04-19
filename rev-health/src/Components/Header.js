@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {NavLink} from 'react-router-dom'
 
+
 const mainDiv = {
 width: '100vw',
 height: '60px',
@@ -53,6 +54,7 @@ class Header extends Component {
             <NavLink to="/procedures" style={links}><i  className="fas fa-home"></i> View Procedures</NavLink>
             <span style={links}> | </span>
 
+            
             {log}
         
             

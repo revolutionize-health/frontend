@@ -26,14 +26,22 @@ class ProcedureCard extends React.Component{
     }
       
       render(){
-          console.log("props", this.props)
+          console.log("props", this.props.id)
+        let log;
+        const isLoggedIn = localStorage.getItem('token');
+        if (isLoggedIn) {
+            log =  <Link to={`/update/${this.props.id}`} style={{ textDecoration: 'none', color: '#062a3a', cursor: 'pointer', marginTop: '10px' }}>Edit Procedure</Link>;
+          } else {
+            
+          }
         return (
             <div style={mainDiv}>
             <div className={'card-2'}>
               <p>Procedure Name: {this.props.name}</p>
+              
                 <span>Procedure Cost: {this.props.cost}</span>
                 <span>{this.props.procedures}</span>
-                <Link to={`/update/${this.props.id}`} id={this.props.id} style={{ textDecoration: 'none', color: '#062a3a', cursor: 'pointer', marginTop: '10px' }}><i class="fas fa-pencil-alt"></i></Link>
+                {log}
                 
                 
                 

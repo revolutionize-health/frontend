@@ -49,11 +49,18 @@ constructor(){
 
         
 
-        handleSubmit = event => {
+        
+
+        handleSubmit = async event => {
             event.preventDefault();
-            this.props.addDoctor(this.state);
-               
-        }
+            await this.props.addDoctor(this.state);
+          
+            
+          
+            this.props.history.push("/procedures");
+          }
+
+
 
         render(){
             return(
@@ -84,7 +91,7 @@ constructor(){
                     </div>
                     </div>
                     <Button variant="contained" color="primary" type="submit"  >
-                            Add Procedure
+                            Add Doctor
                             </Button>
 
                     </form>

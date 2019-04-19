@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import {register} from "../Actions";
 import Button from "@material-ui/core/Button";
+import { Route, Redirect } from 'react-router'
 import './Components.css';
 
 
@@ -51,14 +52,15 @@ class Register extends Component {
         });
       };
 
-      submitHandle = event => {
+     ;
+
+      submitHandle = async event => {
         event.preventDefault();
-        this.props.register(this.state);
-        alert('Working')
-        console.log('state', this.state)
+        await this.props.register(this.state);
         
+        this.props.history.push("/dashboard")
       
-      };
+      }
 
 
     render(){
@@ -112,8 +114,7 @@ class Register extends Component {
                            style={input}
                            >
                     </input>
-                    <span style={title}>Currently Insured?</span>
-                    <input type="checkbox"></input>
+                    
                     
                     <Button variant="contained" color="primary" type="submit">
                             Register User

@@ -66,7 +66,7 @@ class Dashboard extends Component {
                         <Route path ="/doctorform" component={AddDoctor} />
                         <Route path ="/accountsettings" component={AccountDetails} />
                         <Route path ="/insurer" component={AddInsurer} />
-                        <Route path ="/update" component={UpdateProcedure}/>
+                        <Route path ="/update/:id" component={UpdateProcedure}/>
                         
                         </Router>
                         

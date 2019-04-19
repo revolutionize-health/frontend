@@ -49,14 +49,19 @@ class LogIn extends React.Component{
         event.preventDefault();
         this.props.login(this.state.credentials)
             .then(() => {
+                
                 this.props.history.push('/dashboard');
             })
+            
            
     }
 
     render(){
+        
+        
         return (
             <div style={mainDiv}>
+               
                 <form className='card-1' onSubmit={this.login}>
                 
                 

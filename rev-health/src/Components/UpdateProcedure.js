@@ -25,25 +25,26 @@ const title={
     
 }
 
+
+
 class UpdateProcedure extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            procedure_name: '',
-            cost: '',
+
+            procedure_name: "",
+            cost: "",
+            id: ''
+           
             
             
         }
     }
-    componentDidMount() {
-        const {procedures, match} = this.props
-        const procedure = procedures.find(procedures => procedures.id === Number(match.params.id))
-        this.setState(procedures)
-    }
+   
 
     inputHandler = event => {
-        this.setState({ [event.target.name]: event.target.value })
+        this.setState({ [event.target.name]: event.target.value, id: this.props.match.params.id -0 } )
     }
 
     submitHandler = event=> {
