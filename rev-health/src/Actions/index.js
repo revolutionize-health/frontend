@@ -129,10 +129,13 @@ export const addProcedure = procedure => dispatch => {
           .catch(err => ({ err }))
         };
 
-        export const updateProcedure = updateProcedure => dispatch => {
+        export const updateProcedure =  procedure => dispatch => {
             dispatch({ type: UPDATE_PROCEDURE });
             axios
-              .put(`https://revolutionize-health.herokuapp.com/api/procedures/${updateProcedure.id}`, updateProcedure)
+              .put(`https://revolutionize-health.herokuapp.com/api/procedures/${procedure.id}`,   {
+                "procedure_name" : procedure.procedure_name, 
+                 "cost": procedure.cost
+             })
               .then(response => {
                 console.log("this is the response", response.data);
                 dispatch({type: PROCEDURE_UPDATED, payload: response.data})
@@ -175,6 +178,7 @@ export const addDoctor = doctor => dispatch => {
         console.log(response.data);
         
       })
+      .then (() => getDoctor())
       .catch(err => ({ err }))
     };
 

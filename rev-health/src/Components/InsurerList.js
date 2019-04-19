@@ -21,7 +21,7 @@ class InsurersList extends React.Component {
         return (
             <div>
                {this.props.insurers.map(insurers =>
-	            <InsurerCard insurers={insurers} name={insurers.insurer_name} key={insurers.insurer_id + insurers.insurer_name}/>)}  
+	            <InsurerCard insurers={insurers} name={insurers.insurer_name} id={insurers.insurer_id} key={insurers.insurer_id + insurers.insurer_name}/> )}  
             </div>
 
         )

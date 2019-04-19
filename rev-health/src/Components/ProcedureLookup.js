@@ -7,9 +7,13 @@ class Procedures extends Component {
 
     }
 
+   
+
     render(){
+        console.log(window.location.pathname)
         return(
             <div>
+                <input type="text" placeholder="Search"  />
                 <ProcedureList/>
             </div>
         )

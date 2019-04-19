@@ -86,8 +86,8 @@ constructor(){
                     </div>
                     </div>
                     <Button variant="contained" color="primary" type="submit">
-                            Add Procedure
-                            </Button>
+                     Add Procedure 
+                            </Button> 
 
                     </form>
                 </div>

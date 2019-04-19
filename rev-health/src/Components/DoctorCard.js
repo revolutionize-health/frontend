@@ -21,8 +21,7 @@ class DoctorCard extends React.Component{
 
     clickHandler = () => {
         this.props.deleteDoctor(this.props.id);
-        
-        
+         
     }
     
       render(){
@@ -33,7 +32,7 @@ class DoctorCard extends React.Component{
              <div className={'card-2'}>
               <p>Doctor Name:  {this.props.name}</p>
               <p>Doctor's Website:  {this.props.website}</p>
-                <span>Edit Doctor</span>
+                
                 <button onClick={this.clickHandler}><i className="far fa-minus-square"></i></button>
                 
             </div>

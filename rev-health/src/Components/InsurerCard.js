@@ -32,7 +32,7 @@ class InsurerCard extends React.Component{
             <div style={mainDiv}>
              <div className={'card-2'}>
               <p>Insurer Name:  {this.props.name}</p>
-                <span>Edit Insurer</span>
+                
                 <button onClick={this.clickHandler}><i className="far fa-minus-square"></i></button>
                 
             </div>

@@ -104,7 +104,8 @@ const rootReducer = (state = initialState, action) => {
             }
          case DELETE_DOCTOR:
             return{
-                ...state
+                ...state,
+                
             }
 
             case ADD_INSURER:
